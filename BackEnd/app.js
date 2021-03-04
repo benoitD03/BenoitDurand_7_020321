@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 
+const userRoutes = require('./routes/user');
+
 const app = express();
 
 app.use((req, res, next) => {
@@ -13,5 +15,7 @@ app.use((req, res, next) => {
 
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
+
+  app.use('/api/users', userRoutes);
 
   module.exports = app;
