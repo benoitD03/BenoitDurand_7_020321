@@ -1,10 +1,10 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-//const models = require('../models');
 const db = require('../models/index');
+const fs = require('fs');
 
 
-//const User = require('../models/user');
+
 // REGEX 
 const emailREGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const passwordREGEX = /^(?=.*\d).{6,}$/;
@@ -108,3 +108,31 @@ exports.getUserProfile = (req, res, next) => {
     .then(user => res.status(200).json(user))
     .catch(error => res.status(404).json({ error }));
 };
+
+// ****************** Modifier un utilisateur ******************
+
+exports.modifyUser = (req, res, next) => {
+    const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
+    const userId = decodedToken.userId;
+    
+    db.User.findOne({
+        attributes: ['id', 'email', 'description', 'image'],
+        where: {id: userId}
+    })
+    .then(userFound => {
+        if (!userFound){
+            return res.status(404).json({ error : 'Utilisateur non trouvé'})
+        }
+        db.User.update({
+            email: req.body.email,
+            description: req.body.description,
+            image: req.file ? `${req.protocol}://${req.get('host')}/images/${req.file.filename}`: req.body.image
+        },
+            {where: {id: userId}
+        })
+        .then(() => res.status(201).json({ message: 'Profil modifié avec succès' }))
+        .catch(error => res.status(500).json({ error }));
+    })
+    .catch(error => res.status(500).json({ error }));
+}; 
