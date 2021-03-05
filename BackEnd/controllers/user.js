@@ -136,3 +136,19 @@ exports.modifyUser = (req, res, next) => {
     })
     .catch(error => res.status(500).json({ error }));
 }; 
+
+// ****************** Supprimer un utilisateur ******************
+
+exports.deleteUser = (req, res, next) => {
+    db.User.findOne({
+        where: { id: req.params.id }
+    })
+    .then(() => {
+        db.User.destroy({ where: { id: req.params.id }})
+        .then(() => res.status(200).json({ message: 'Utilisateur supprimé'}))
+        .catch(error => res.status(500).json({ error }));
+    })
+};
+
+
+
