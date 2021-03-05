@@ -1,10 +1,13 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const models = require('../models');
+//const models = require('../models');
 const db = require('../models/index');
 
 
-const User = require('../models/user');
+//const User = require('../models/user');
+// REGEX 
+const emailREGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const passwordREGEX = /^(?=.*\d).{6,}$/;
 
 // ****************** Inscription de l'utilisateur ******************
 exports.signup = (req, res, next) => {
@@ -17,7 +20,13 @@ exports.signup = (req, res, next) => {
 
     //Verification des champs remplis par l'utilisateur
     if (email == null || username == null || password == null) {
-        return res.status(400).json({ error: 'Champ(s) manquant(s)'});
+        return res.status(400).json({ 'error': 'Champ(s) manquant(s)'});
+    }
+    if (!emailREGEX.test(email)) {
+        return res.status(400).json({ 'error': 'email non valide'});
+    }
+    if (!passwordREGEX.test(password)) {
+        return res.status(400).json({ 'error': 'Le mot de passe doit compter minimum 6 caractères et inclure un chiffre'});
     }
     
     db.User.findOne({
