@@ -94,3 +94,17 @@ exports.login = (req, res, next) => {
     })
     .catch(error => res.status(500).json({ error }));
 };
+
+// ****************** Afficher un utilisateur ******************
+
+exports.getUserProfile = (req, res, next) => {
+    const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
+    const userId = decodedToken.userId;
+    db.User.findOne({
+        attributes: ['id', 'email', 'username', 'description', 'image'],
+        where: { id: userId }
+    })
+    .then(user => res.status(200).json(user))
+    .catch(error => res.status(404).json({ error }));
+};
