@@ -19,15 +19,26 @@ exports.createMessage = (req, res, next) => {
     })
     .catch(error => res.status(500).json({ error })); 
 
-    const message = db.Message.create({
+     db.Message.create({
         idUSERS: userId,
         title: req.body.title,
         content: req.body.content,
         attachment: req.body.attachment
     })
-    //message.save()
     .then(message => res.status(201).json({ message }))
     .catch(error => res.status(400).json({ error }));
         
-   
 }
+
+// ****************** Afficher tous les message ******************
+
+exports.getAllMessages = (req, res, next) => {
+    db.Message.findAll({
+        include: [{
+            model:db.User,
+            attributes: ['username', 'image']
+        }]
+    })
+    .then(messages => res.status(200).json({ messages }))
+    .catch(error => res.status(400).json({ error }));
+};
