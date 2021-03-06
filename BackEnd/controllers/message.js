@@ -42,3 +42,15 @@ exports.getAllMessages = (req, res, next) => {
     .then(messages => res.status(200).json({ messages }))
     .catch(error => res.status(400).json({ error }));
 };
+
+// ****************** Effacer un message ******************
+exports.deleteMessage = (req, res, next) => {
+    db.Message.findOne({
+        where: { id: req.params.id }
+    })
+    .then(() => {
+        db.Message.destroy({ where: { id: req.params.id }})
+        .then(() => res.status(200).json({ message: 'Message supprimé'}))
+        .catch(error => res.status(500).json({ error }));
+    })
+};
