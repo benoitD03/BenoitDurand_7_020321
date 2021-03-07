@@ -11,4 +11,4 @@ router.get('/me', auth, userController.getUserProfile);
 router.put('/me', auth, multer, userController.modifyUser);
 router.delete('/:id', auth, multer, userController.deleteUser);
 
-module.exports = router; 
+module.exports = router;

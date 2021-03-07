@@ -14,7 +14,7 @@ exports.signup = (req, res, next) => {
 
     const email = req.body.email;
     const username = req.body.username;
-    const password = req.body.passworrd;
+    const password = req.body.password;
     const description = req.body.description;
     const image = req.body.image;
 
@@ -40,7 +40,7 @@ exports.signup = (req, res, next) => {
                 const user = new db.User({
                     email: email,
                     username: username,
-                    passworrd: hash,
+                    password: hash,
                     description: description,
                     isAdmin: false,
                     image: image
@@ -62,7 +62,7 @@ exports.signup = (req, res, next) => {
 exports.login = (req, res, next) => {
 
     const email = req.body.email;
-    const password = req.body.passworrd;
+    const password = req.body.password;
 
     //Verification des champs remplis par l'utilisateur
     if (email == null || password == null) {
@@ -76,7 +76,7 @@ exports.login = (req, res, next) => {
         if (!user) {
             return res.status(401).json({ error : 'Utilisateur non trouvé'})
         } 
-        bcrypt.compare(req.body.passworrd, user.passworrd)
+        bcrypt.compare(req.body.password, user.password)
             .then(valid => {
                 if (!valid) {
                     return res.status(401).json({ error : 'Mot de passe incorrect'})
