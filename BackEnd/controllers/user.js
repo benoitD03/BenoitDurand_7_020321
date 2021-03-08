@@ -16,7 +16,7 @@ exports.signup = (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
     const description = req.body.description;
-    const image = req.body.image;
+    //const image = req.body.image;
 
     //Verification des champs remplis par l'utilisateur
     if (email == null || username == null || password == null) {
@@ -43,7 +43,7 @@ exports.signup = (req, res, next) => {
                     password: hash,
                     description: description,
                     isAdmin: false,
-                    image: image
+                    image: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
                 });
             user.save()
                 .then(user => res.status(201).json( user ))
@@ -127,7 +127,7 @@ exports.modifyUser = (req, res, next) => {
         db.User.update({
             email: req.body.email,
             description: req.body.description,
-            image: req.file ? `${req.protocol}://${req.get('host')}/images/${req.file.filename}`: req.body.image
+            image: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
         },
             {where: {id: userId}
         })
