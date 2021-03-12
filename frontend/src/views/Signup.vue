@@ -1,28 +1,25 @@
 <template>
     <div id="container">
         <form>
-                <router-link to="/login">Se connecter</router-link><br>
-                <!-- <label><b>Adresse email</b></label> -->
-                <input type="text" placeholder="Votre adresse email" name="email" required v-model="email">
+            <router-link to="/login">Se connecter</router-link><br>
+            
+            <label><b>Adresse email</b></label>
+            <input type="text" placeholder="Votre adresse email" name="email" required v-model="email">
 
-                <!-- <label><b>Pseudo</b></label> -->
-                <input type="text" placeholder="Votre Pseudo" name="username" required v-model="username">
+            <label><b>Pseudo</b></label>
+            <input type="text" placeholder="Votre Pseudo" name="username" required v-model="username">
 
-                <!-- <label><b>Mot de passe</b></label> -->
-                <input type="password" placeholder="Votre Mot de passe" name="password" required v-model="password">
+            <label><b>Mot de passe</b></label>
+            <input type="password" placeholder="Votre Mot de passe" name="password" required v-model="password">
 
-                <!-- <label><b>Description</b></label> -->
-                <!-- <textarea name="description" rows="5" cols="33" v-model="description"></textarea>
+            <label><b>Description</b></label>
+            <textarea name="description" rows="5" cols="33" v-model="description"></textarea>
 
-                <v-file-input truncate-length="15" v-model="image"></v-file-input> -->
+            <v-file-input truncate-length="15" v-model="image"></v-file-input>
 
-                <input type="submit" id='submit' value="S'inscrire" @click.prevent="userSignup">
-
-                
-            </form>
-        
+            <input type="submit" id='submit' value="S'inscrire" @click.prevent="userSignup">        
+        </form>    
     </div>
-    
 </template>
 
 <script>
@@ -33,9 +30,9 @@ export default {
             axios.post('http://localhost:3000/api/users/signup', {
                 email: this.email,
                 username: this.username,
-                password: this.password
-                //description: this.description,
-                //image: this.image
+                password: this.password,
+                description: this.description,
+                image: this.image
             })
             .then(response => {
                 console.log(response);

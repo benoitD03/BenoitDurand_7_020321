@@ -43,7 +43,7 @@ exports.signup = (req, res, next) => {
                     password: hash,
                     description: description,
                     isAdmin: false,
-                    image: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+                    image: req.file ? `${req.protocol}://${req.get('host')}/images/${req.file.filename}`: req.body.image
                 });
             user.save()
                 .then(user => res.status(201).json( user ))
