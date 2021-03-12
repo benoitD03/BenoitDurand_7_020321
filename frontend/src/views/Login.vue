@@ -4,12 +4,12 @@
             <form>
                 <router-link to="/signup">S'inscrire</router-link><br>
                 <label><b>Adresse email</b></label>
-                <input type="text" placeholder="Votre adresse email" name="email" required>
+                <input type="text" placeholder="Votre adresse email" name="email" required v-model="email">
 
                 <label><b>Mot de passe</b></label>
-                <input type="password" placeholder="Votre Mot de passe" name="password" required>
+                <input type="password" placeholder="Votre Mot de passe" name="password" required v-model="password">
 
-                <input type="submit" id='submit' value='Connexion'>
+                <input type="submit" id='submit' value='Connexion' @click.prevent="userLogin">
             </form>
         </div>
 </template>
@@ -17,8 +17,21 @@
 
 
 <script>
+import axios from 'axios';
 export default {
-    
+    methods: {
+        userLogin() {
+            axios.post('http://localhost:3000/api/users/login', {
+                email: this.email,
+                password: this.password
+            })
+            .then(response => {
+                localStorage.setItem("token", response.data.token);
+                window.location.href='/'
+            })
+            .catch(error => console.log(error));
+        }
+    }
 }
 </script>
 
