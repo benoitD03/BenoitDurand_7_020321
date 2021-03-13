@@ -1,22 +1,33 @@
 <template>
-    <v-top-navigation id="navbar">
-    <v-btn>
-      <span>Mon profil</span>
+  <v-toolbar
+    color="#26c6da"
+    dark
+  >
+    <v-toolbar-title><v-icon>mdi-account</v-icon>Mon profil</v-toolbar-title>
 
-      <v-icon>mdi-history</v-icon>
-    </v-btn>
+    <v-divider
+      class="mx-4"
+      vertical
+      id="divider"
+    ></v-divider>
 
-    <v-btn>
-      <img src="../assets/icon-left-font-monochrome-black.png">
+    <span class="subheading"><img src="../assets/icon-left-font-monochrome-black.png"></span>
 
-    </v-btn>
+    <v-spacer></v-spacer>
 
-    <v-btn>
-      <span>Se déconnecter</span>
+    <v-toolbar-items class="hidden-sm-and-down">
 
-      <v-icon>mdi-map-marker</v-icon>
-    </v-btn>
-  </v-top-navigation>
+      <v-divider vertical></v-divider>
+
+      <v-btn text>
+        <v-icon>mdi-logout</v-icon>Se déconnecter
+      </v-btn>
+
+      <v-divider vertical></v-divider>
+    </v-toolbar-items>
+
+    <v-app-bar-nav-icon></v-app-bar-nav-icon>
+  </v-toolbar>
 </template>
 
 <script>
@@ -28,9 +39,17 @@ export default {
 <style scoped>
     img {
         width: 150px;
+        margin-left: 30px;
     }
     #navbar {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
+        border-bottom: 2px solid black;
+    }
+    .vbtn {
+        margin: 10px 0;
+    }
+    #divider {
+        margin-left: 30px;
     }
 </style>

@@ -66,7 +66,7 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 input[type=submit] {
-    background-color: #53af57;
+    background-color: #26c6da;
     border-radius: 15px;
     color: white;
     padding: 14px 20px;
@@ -77,8 +77,8 @@ input[type=submit] {
 }
 input[type=submit]:hover {
     background-color: white;
-    color: #53af57;
-    border: 1px solid #53af57;
+    color: #26c6da;
+    border: 1px solid #26c6da;
 }
 
 </style>
