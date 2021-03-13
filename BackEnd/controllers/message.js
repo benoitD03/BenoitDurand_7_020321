@@ -39,7 +39,10 @@ exports.getAllMessages = (req, res, next) => {
             attributes: ['username', 'image']
         }]
     })
-    .then(messages => res.status(200).json({ messages }))
+    .then(messages => {
+        res.status(200).json({ messages })
+    })
+        
     .catch(error => res.status(400).json({ error }));
 };
 

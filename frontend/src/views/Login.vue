@@ -1,17 +1,16 @@
 <template>
-  <div id="container">
-            
-            <form>
-                <router-link to="/signup">S'inscrire</router-link><br>
-                <label><b>Adresse email</b></label>
-                <input type="text" placeholder="Votre adresse email" name="email" required v-model="email">
+  <div id="container">  
+        <form>
+            <router-link to="/signup">S'inscrire</router-link><br>
+            <label><b>Adresse email</b></label>
+            <input type="text" placeholder="Votre adresse email" name="email" required v-model="email">
 
-                <label><b>Mot de passe</b></label>
-                <input type="password" placeholder="Votre Mot de passe" name="password" required v-model="password">
+            <label><b>Mot de passe</b></label>
+            <input type="password" placeholder="Votre Mot de passe" name="password" required v-model="password">
 
-                <input type="submit" id='submit' value='Connexion' @click.prevent="userLogin">
-            </form>
-        </div>
+            <input type="submit" id='submit' value='Connexion' @click.prevent="userLogin">
+        </form>
+    </div>
 </template>
 
 
@@ -27,7 +26,7 @@ export default {
             })
             .then(response => {
                 localStorage.setItem("token", response.data.token);
-                window.location.href='/'
+                window.location.href='/main'
             })
             .catch(error => console.log(error));
         }
