@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const cors = require('cors');
 
 const userRoutes = require('./routes/user');
 const messageRoutes = require('./routes/message');
@@ -16,6 +17,7 @@ app.use((req, res, next) => {
 
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
+  app.use(cors());
 
   app.use('/api/users', userRoutes);
   app.use('/api/messages', messageRoutes);
