@@ -2,6 +2,7 @@
 <template>
 <div id="container">
     <Navigation/>
+    <CreateMessage/>
 
      <v-card
     class="mx-auto"
@@ -60,13 +61,14 @@
 
 <script>
 import Navigation from '@/components/Navigation.vue';
+import CreateMessage from '@/components/CreateMessage.vue';
 import VueJwtDecode from 'vue-jwt-decode';
 import axios from 'axios';
 
 export default {
   name: 'Main',
   components: {
-    Navigation
+    Navigation, CreateMessage
   },
   data() {
       return {
