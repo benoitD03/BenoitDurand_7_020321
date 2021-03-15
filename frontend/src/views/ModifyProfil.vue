@@ -2,19 +2,16 @@
     <div id="modify">
         <Navigation/>
          <div id="container">  
-            <form>
+            <form @submit.prevent="modify">
 
-            <label><b>Adresse email</b></label>
-            <input type="text" placeholder="Votre adresse email" name="email" required v-model="email">
+            <label><b>Adresse email</b> (Actuellement: {{ user.email }})</label>
+            <input type="text" placeholder="Votre Nouvelle adresse email" name="email" required v-model="email">
 
-            <label><b>Pseudo</b></label>
-            <input type="text" placeholder="Votre Pseudo" name="username" required v-model="username">
+            <label><b>Pseudo</b> (Actuellement: {{ user.username }})</label>
+            <input type="text" placeholder="Votre nouveau Pseudo" name="username" required v-model="username">
 
-            <label><b>Mot de passe</b></label>
-            <input type="password" placeholder="Votre Mot de passe" name="password" required v-model="password">
-
-            <label><b>Description</b></label>
-            <textarea name="description" rows="5" cols="33" v-model="description"></textarea>
+            <label><b>Description</b> (Actuellement: {{ user.description }})</label>
+            <textarea name="description" rows="5" cols="33" placeholder="Votre nouvelle Description" v-model="description"></textarea>
 
             <v-file-input truncate-length="15" v-model="image"></v-file-input>
 
@@ -28,13 +25,50 @@
 
 <script>
 import Navigation from '@/components/Navigation.vue';
-//import axios from 'axios';
-//import VueJwtDecode from 'vue-jwt-decode';
+import axios from 'axios';
+import VueJwtDecode from 'vue-jwt-decode';
 export default {
-    name: 'MyProfil',
+    name: 'ModifyProfil',
     components: {
     Navigation
   },
+  data() {
+      return {
+          user: null
+      }
+  },
+  created() {
+      this.token = localStorage.getItem("token");
+      VueJwtDecode.decode(this.token);
+      axios.get('http://localhost:3000/api/users/me', {
+          headers: { Authorization: "Bearer " + this.token}
+      })
+      .then(response => {
+          console.log(response.data);
+          this.user = response.data;
+      })
+      .catch(error => console.log(error));
+  },
+  methods: {
+      modify() {
+          let formData = new FormData;
+
+          formData.append('email', this.email);
+          formData.append('username', this.username);
+          formData.append('description', this.description);
+
+          axios.put('http://localhost:3000/api/users/me', formData, {
+              headers: { Authorization: "Bearer " + this.token,
+                        'Content-Type': 'multipart/form-data'
+                },    
+          })
+          .then(response => {
+              console.log(response);
+              window.location.href="/myprofil"
+          })
+          .catch(error => console.log(error));
+      }
+  }
     
 }
 </script>

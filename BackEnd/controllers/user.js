@@ -117,7 +117,7 @@ exports.modifyUser = (req, res, next) => {
     const userId = decodedToken.userId;
     
     db.User.findOne({
-        attributes: ['id', 'email', 'description', 'image'],
+        attributes: ['id', 'email', 'username', 'description', 'image'],
         where: {id: userId}
     })
     .then(userFound => {
@@ -127,7 +127,8 @@ exports.modifyUser = (req, res, next) => {
         db.User.update({
             email: req.body.email,
             description: req.body.description,
-            image: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+            username: req.body.username,
+            image: req.file ? `${req.protocol}://${req.get('host')}/images/${req.file.filename}`: req.body.image
         },
             {where: {id: userId}
         })
