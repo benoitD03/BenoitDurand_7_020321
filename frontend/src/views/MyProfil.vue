@@ -22,6 +22,7 @@
               color="#26c6da"
               dark
               large
+              @click="deleteProfil"
             >
               Supprimer le profil
             </v-btn>
@@ -57,6 +58,25 @@ export default {
           this.user = response.data;
       })
       .catch(error => console.log(error));
+  },
+  methods: {
+      deleteProfil() {
+          const confirmation = confirm("Êtes vous sûr de vouloir supprimer votre profil ?")
+          if (confirmation){
+              this.token = localStorage.getItem("token");
+              this.user = VueJwtDecode.decode(this.token);
+              console.log(this.user.userId)
+              axios.delete('http://localhost:3000/api/users/' + this.user.userId, {
+                  headers: { Authorization: "Bearer " + this.token }
+              })
+              .then(response => {
+                  console.log(response.data);
+                  localStorage.removeItem("token");
+                  window.location.href='/signup'
+              })
+              .catch(error => console.log(error));
+          }
+      }
   }
 }
 </script>
