@@ -19,7 +19,7 @@
 
       <v-divider vertical></v-divider>
 
-      <v-btn text>
+      <v-btn text @click="disconnect">
         <v-icon>mdi-logout</v-icon>Se déconnecter
       </v-btn>
 
@@ -32,8 +32,16 @@
 
 <script>
 export default {
-    name: 'Navigation'
+    name: 'Navigation',
+    methods: {
+      disconnect() {
+        this.token = localStorage.getItem("token");
+        localStorage.removeItem("token");
+        window.location.href="/login";
+      }
+    }
 }
+
 </script>
 
 <style scoped>
