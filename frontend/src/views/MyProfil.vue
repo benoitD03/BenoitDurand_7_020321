@@ -15,6 +15,7 @@
               color="#26c6da"
               dark
               large
+              @click="goToModify"
             >
               Modifier le profil
             </v-btn>
@@ -76,6 +77,9 @@ export default {
               })
               .catch(error => console.log(error));
           }
+      },
+      goToModify() {
+        window.location.href="/modifyprofil";
       }
   }
 }
@@ -86,7 +90,10 @@ export default {
     text-align: center;
     margin: 30px auto;
     max-width: 800px;
-    border: 2px solid black;
+    border: 1px solid #f1f1f1;
+    background-color: #D9EEF0;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 15px;
 }
 
 #username, #avatar, #infos {

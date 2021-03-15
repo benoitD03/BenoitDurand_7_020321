@@ -95,9 +95,11 @@ export default {
 #container {
     max-width: 700px;
     margin: 30px auto;
-    border: 2px solid black;
     padding: 20px;
-    border-radius: 5px;
+    border: 1px solid #f1f1f1;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 input[type=submit] {
     background-color: #26c6da;

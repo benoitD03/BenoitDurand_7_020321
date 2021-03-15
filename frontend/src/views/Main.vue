@@ -105,5 +105,8 @@ export default {
 <style scoped>
 #card {
     margin: 20px auto;
+    border: 1px solid #f1f1f1;
+    border-radius: 15px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 </style>
