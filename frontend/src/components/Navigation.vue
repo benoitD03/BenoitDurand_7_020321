@@ -3,16 +3,20 @@
     color="#26c6da"
     dark
   >
-    <v-toolbar-title><v-icon>mdi-account</v-icon>Mon profil</v-toolbar-title>
+
+    <v-btn text @click="goToProfil">
+        <v-icon>mdi-account</v-icon>Mon profil
+      </v-btn>
 
     <v-divider
       class="mx-4"
       vertical
       id="divider"
     ></v-divider>
-
-    <span class="subheading"><img src="../assets/icon-left-font-monochrome-black.png"></span>
-
+    <v-btn text @click="goToMainPage">
+      <span class="subheading"><img src="../assets/icon-left-font-monochrome-black.png"></span>
+    </v-btn>
+    
     <v-spacer></v-spacer>
 
     <v-toolbar-items class="hidden-sm-and-down">
@@ -38,6 +42,12 @@ export default {
         this.token = localStorage.getItem("token");
         localStorage.removeItem("token");
         window.location.href="/login";
+      },
+      goToProfil() {
+        window.location.href="/myprofil";
+      },
+      goToMainPage() {
+        window.location.href="/main";
       }
     }
 }
