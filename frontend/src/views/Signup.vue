@@ -15,8 +15,6 @@
             <label><b>Description</b></label>
             <textarea name="description" rows="5" cols="33" v-model="description"></textarea>
 
-            <v-file-input truncate-length="15" v-model="image"></v-file-input>
-
             <input type="submit" id='submit' value="S'inscrire" @click.prevent="userSignup">        
         </form>    
     </div>
@@ -31,16 +29,14 @@ export default {
                 email: this.email,
                 username: this.username,
                 password: this.password,
-                description: this.description,
-                image: this.image
+                description: this.description
             })
             .then(response => {
                 console.log(response);
                 window.location.href='/login'
             })
             .catch(error => console.log(error));
-        }
-        
+        }, 
     }
 }
 </script>

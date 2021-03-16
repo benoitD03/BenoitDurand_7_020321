@@ -43,7 +43,7 @@ exports.signup = (req, res, next) => {
                     password: hash,
                     description: description,
                     isAdmin: false,
-                    image: req.file ? `${req.protocol}://${req.get('host')}/images/${req.file.filename}`: req.body.image
+                    image: "http://localhost:3000/images/user_default.jpg"
                 });
             user.save()
                 .then(user => res.status(201).json( user ))

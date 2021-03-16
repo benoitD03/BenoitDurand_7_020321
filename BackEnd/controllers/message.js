@@ -46,7 +46,7 @@ exports.getAllMessages = (req, res, next) => {
     .catch(error => res.status(400).json({ error }));
 };
 
-// ****************** Effacer un message ******************
+// ****************** Modifier un message ******************
 
 exports.modifyMessage = (req, res, next) => {
 

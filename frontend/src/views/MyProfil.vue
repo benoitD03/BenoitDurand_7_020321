@@ -3,7 +3,7 @@
         <Navigation/>
         <div id="profil">
             <div id="username">
-                <v-avatar id="avatar" size="127"><img src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light" alt=""></v-avatar>
+                <v-avatar id="avatar" size="127"><img :src="user.image" alt="Photo de profil"></v-avatar>
                 <h1>{{ user.username }}</h1>
             </div>
             <div id="infos">
