@@ -8,7 +8,7 @@
               v-model="title"
             ></v-text-field>
 
-            <v-file-input id="file" truncate-length="15" v-model="attachment"></v-file-input>
+            <input type="file" ref="attachment" @change="uploadImage()">
 
             <v-container id="textarea" fluid>
                 <v-textarea
@@ -34,10 +34,12 @@ export default {
         return {
             messages: null,
             token: null,
-            title: null,
-            attachment: null,
-            content: null,
-            user: null 
+            user: null, 
+            message: {
+                title: null,
+                content: null,
+                attachment: null
+            }
         }
     },
     methods: {
@@ -48,8 +50,6 @@ export default {
                 let formData = new FormData();
                 formData.append('title', this.title);
                 formData.append('content', this.content);
-                console.log(this.content);
-                console.log(this.title);
                 
                 axios.post('http://localhost:3000/api/messages', formData, {
                     headers: {
@@ -59,15 +59,16 @@ export default {
                 })
                 .then(response => {
                     console.log(response);
+                    
                     window.location.href='/main';
+                    console.log(this.attachment);
                 })
                 .catch(error => console.log(error));
             } else {
                 let formData = new FormData();
                 formData.append('title', this.title);
-                formData.append('attachment', this.attachment);
+                formData.append('attachment', this.attachment)
                 formData.append('content', this.content);
-                
 
                 axios.post('http://localhost:3000/api/messages', formData, {
                     headers: {
@@ -83,6 +84,9 @@ export default {
                 .catch(error => console.log(error));
             }
             
+        },
+        uploadImage() {
+            this.attachment = this.$refs.attachment.files[0];
         }
     }
 }

@@ -17,8 +17,12 @@
       <span class="title font-weight-light">{{ message.createdAt }} <br> {{ message.title }}</span>
       
     </v-card-title>
+    
 
     <v-card-text class="headline font-weight-bold">
+      <div id="attachment" v-if="message.attachment">
+        <img :src="message.attachment" alt="attachment">
+      </div>
       {{ message.content }}
     </v-card-text>
 
@@ -144,5 +148,8 @@ export default {
     border: 1px solid #f1f1f1;
     border-radius: 15px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+#attachment img {
+  max-width: 250px;
 }
 </style>

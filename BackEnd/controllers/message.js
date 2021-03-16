@@ -23,7 +23,7 @@ exports.createMessage = (req, res, next) => {
         idUSERS: userId,
         title: req.body.title,
         content: req.body.content,
-        attachment: req.body.attachment
+        attachment: req.file ? `${req.protocol}://${req.get('host')}/images/${req.file.filename}`: req.body.attachment
     })
     .then(message => res.status(201).json({ message }))
     .catch(error => res.status(400).json({ error }));
@@ -77,9 +77,20 @@ exports.deleteMessage = (req, res, next) => {
     db.Message.findOne({
         where: { id: req.params.id }
     })
-    .then(() => {
-        db.Message.destroy({ where: { id: req.params.id }})
-        .then(() => res.status(200).json({ message: 'Message supprimé'}))
-        .catch(error => res.status(500).json({ error }));
+    .then(message => {
+        if (message.attachment !== null) {
+            const filename = message.attachment.split('/images/')[1];
+            fs.unlink(`images/${filename}`, () => {
+            db.Message.destroy({ where: { id: req.params.id }})
+                .then(() => res.status(200).json({ message: 'Message supprimé'}))
+                .catch(error => res.status(400).json({ error }));
+            })
+        } else {
+            db.Message.destroy({ where: { id: req.params.id }})
+                .then(() => res.status(200).json({ message: 'Message supprimé'}))
+                .catch(error => res.status(400).json({ error }));
+        }
+        
     })
+    .catch(error => res.status(500).json({ error }));
 };
