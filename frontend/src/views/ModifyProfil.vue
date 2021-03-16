@@ -13,7 +13,7 @@
             <label><b>Description</b> (Actuellement: {{ user.description }})</label>
             <textarea name="description" rows="5" cols="33" placeholder="Votre nouvelle Description" v-model="description"></textarea>
 
-            <v-file-input truncate-length="15" v-model="image"></v-file-input>
+            <input type="file" ref="image" @change="uploadImage">
 
             <input type="submit" id='submit' value="Enregistrer les modifications">        
         </form>  
@@ -34,7 +34,12 @@ export default {
   },
   data() {
       return {
-          user: null
+          user: {
+              email: null,
+              username: null,
+              image: null
+          }
+          
       }
   },
   created() {
@@ -56,6 +61,7 @@ export default {
           formData.append('email', this.email);
           formData.append('username', this.username);
           formData.append('description', this.description);
+          formData.append('image', this.user.image);
 
           axios.put('http://localhost:3000/api/users/me', formData, {
               headers: { Authorization: "Bearer " + this.token,
@@ -67,6 +73,9 @@ export default {
               window.location.href="/myprofil"
           })
           .catch(error => console.log(error));
+      },
+      uploadImage() {
+          this.user.image = this.$refs.image.files[0];
       }
   }
     

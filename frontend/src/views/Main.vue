@@ -28,7 +28,7 @@
           <v-img
             class="elevation-6"
             alt=""
-            src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
+            :src="message.User.image"
           ></v-img>
         </v-list-item-avatar>
 
@@ -74,6 +74,7 @@ export default {
       return {
           messages: null,
           token: null,
+          user: null,
           message: {
               id: null,
               idUSERS: null,
@@ -96,6 +97,15 @@ export default {
               console.log(this.messages)
           })
           .catch(error => console.log(error));
+
+          axios.get('http://localhost:3000/api/users/me', {
+          headers: { Authorization: "Bearer " + this.token}
+        })
+        .then(response => {
+            console.log(response.data);
+            this.user = response.data;
+        })
+        .catch(error => console.log(error));
   }
 }
 </script>
