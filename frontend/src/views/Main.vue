@@ -49,6 +49,15 @@
             mdi-share-variant
           </v-icon>
           <span class="subheading">45</span>
+          <v-btn
+              color="#E86969"
+              dark
+              medium
+              @click="deleteMessage(message.id)"
+              v-if="message.idUSERS == user.id"
+            >
+              Supprimer
+            </v-btn>
         </v-row>
       </v-list-item>
     </v-card-actions>
@@ -106,6 +115,23 @@ export default {
             this.user = response.data;
         })
         .catch(error => console.log(error));
+  },
+  methods: {
+    deleteMessage(id) {
+      const confirmation = confirm("Êtes vous sûr de vouloir supprimer ce message ?")
+          if (confirmation){
+              this.token = localStorage.getItem("token");
+              this.user = VueJwtDecode.decode(this.token);
+              axios.delete('http://localhost:3000/api/messages/' + id, {
+                  headers: { Authorization: "Bearer " + this.token }
+              })
+              .then(response => {
+                  console.log(response.data);
+                  window.location.href='/main'
+              })
+              .catch(error => console.log(error));
+          }
+    }
   }
 }
 </script>

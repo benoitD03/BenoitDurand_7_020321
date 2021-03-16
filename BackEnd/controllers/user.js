@@ -144,11 +144,21 @@ exports.deleteUser = (req, res, next) => {
     db.User.findOne({
         where: { id: req.params.id }
     })
-    .then(() => {
-        db.User.destroy({ where: { id: req.params.id }})
-        .then(() => res.status(200).json({ message: 'Utilisateur supprimé'}))
-        .catch(error => res.status(500).json({ error }));
-    })
+    .then(user => {
+        if (user.image !== "http://localhost:3000/images/user_default.jpg") {
+            const filename = user.image.split('/images/')[1];
+            fs.unlink(`images/${filename}`, () => {
+                db.User.destroy({ where: { id: req.params.id }})
+                    .then(() => res.status(200).json({ message: 'Utilisateur supprimé'}))
+                    .catch(error => res.status(400).json({ error }));
+            }) 
+        } else {
+            db.User.destroy({ where: { id: req.params.id }})
+                .then(() => res.status(200).json({ message: 'Utilisateur supprimé'}))
+                .catch(error => res.status(400).json({ error }));
+        } 
+    }) 
+    .catch(error => res.status(500).json({ error })); 
 };
 
 
