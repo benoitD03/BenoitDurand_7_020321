@@ -8,7 +8,7 @@
               v-model="title"
             ></v-text-field>
 
-            <input type="file" ref="attachment" @change="uploadImage()">
+            <input id="uploadImage" type="file" ref="attachment" @change="uploadImage()">
 
             <v-container id="textarea" fluid>
                 <v-textarea
@@ -119,5 +119,12 @@ input[type=submit]:hover {
     background-color: white;
     color: #26c6da;
     border: 1px solid #26c6da;
+}
+#uploadImage {
+    background-color: #26c6da;
+    border-radius: 10px;
+    border: 2px solid black;
+    margin: 20px auto;
+    text-align: center;
 }
 </style>

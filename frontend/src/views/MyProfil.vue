@@ -3,7 +3,7 @@
         <Navigation/>
         <div id="profil">
             <div id="username">
-                <v-avatar id="avatar" size="127"><img :src="user.image" alt="Photo de profil"></v-avatar>
+                <v-avatar id="avatar" size="250"><img :src="user.image" alt="Photo de profil"></v-avatar>
                 <h1>{{ user.username }}</h1>
             </div>
             <div id="infos">

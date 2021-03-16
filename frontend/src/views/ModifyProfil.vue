@@ -13,7 +13,7 @@
             <label><b>Description</b> (Actuellement: {{ user.description }})</label>
             <textarea name="description" rows="5" cols="33" placeholder="Votre nouvelle Description" v-model="description"></textarea>
 
-            <input type="file" ref="image" @change="uploadImage">
+            <input id="uploadImage" type="file" ref="image" @change="uploadImage">
 
             <input type="submit" id='submit' value="Enregistrer les modifications">        
         </form>  
@@ -126,5 +126,12 @@ input[type=submit]:hover {
     background-color: white;
     color: #26c6da;
     border: 1px solid #26c6da;
+}
+#uploadImage {
+    background-color: #26c6da;
+    border-radius: 10px;
+    border: 2px solid black;
+    margin: 20px auto;
+    text-align: center;
 }
 </style>
