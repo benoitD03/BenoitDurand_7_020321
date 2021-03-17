@@ -1,11 +1,11 @@
 <template>
   <div id="container">  
+      <router-link id="signupLink" to="/signup"><v-btn id="signup">S'inscrire</v-btn></router-link><br>
         <form>
-            <router-link to="/signup">S'inscrire</router-link><br>
-            <label><b>Adresse email</b></label>
+            <label><b>Adresse email :</b></label>
             <input type="text" placeholder="Votre adresse email" name="email" required v-model="email">
 
-            <label><b>Mot de passe</b></label>
+            <label><b>Mot de passe :</b></label>
             <input type="password" placeholder="Votre Mot de passe" name="password" required v-model="password">
 
             <input type="submit" id='submit' value='Connexion' @click.prevent="userLogin">
@@ -37,13 +37,11 @@ export default {
 
 
 <style scoped>
-
 #container{
     width:400px;
     margin:0 auto;
     margin-top:10%;
 }
-/* Bordered form */
 form {
     width:100%;
     padding: 30px;
@@ -52,9 +50,6 @@ form {
     background: #fff;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-
-
-/* Full-width inputs */
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -63,22 +58,35 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
-
-/* Set a style for all buttons */
 input[type=submit] {
-    background-color: #26c6da;
+    background-color: #DAF7A6;
     border-radius: 15px;
-    color: white;
+    color: black;
     padding: 14px 20px;
     margin: 8px 0;
-    border: none;
     cursor: pointer;
     width: 100%;
 }
 input[type=submit]:hover {
     background-color: white;
-    color: #26c6da;
-    border: 1px solid #26c6da;
+    color: #052fa7 ;
+    border: 1px solid #052fa7 ;
+}
+#signup  {
+  font-weight: bold;
+  background-color: #052fa7 ;
+  border-radius: 10px;
+  color: white;
+  padding: 15px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 40%;
+}
+#signupLink:link {
+  text-decoration: none;
+  
+  
 }
 
 </style>

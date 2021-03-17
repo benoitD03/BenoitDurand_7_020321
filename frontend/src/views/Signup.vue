@@ -1,7 +1,7 @@
 <template>
     <div id="container">
+        <router-link id="loginLink" to="/login"><v-btn id="login">Se connecter</v-btn></router-link><br>
         <form>
-            <router-link to="/login">Se connecter</router-link><br>
             
             <label><b>Adresse email</b></label>
             <input type="text" placeholder="Votre adresse email" name="email" required v-model="email">
@@ -71,19 +71,33 @@ input[type=text], input[type=password], textarea {
 
 /* Set a style for all buttons */
 input[type=submit] {
-    background-color: #26c6da;
+    background-color: #DAF7A6;
     border-radius: 15px;
-    color: white;
+    color: black;
     padding: 14px 20px;
     margin: 8px 0;
-    border: none;
     cursor: pointer;
     width: 100%;
 }
 input[type=submit]:hover {
     background-color: white;
-    color: #26c6da;
-    border: 1px solid #26c6da;
+    color: #052fa7 ;
+    border: 1px solid #052fa7 ;
 }
-
+#login  {
+  font-weight: bold;
+  background-color: #052fa7 ;
+  border-radius: 10px;
+  color: white;
+  padding: 15px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 40%;
+}
+#loginLink:link {
+  text-decoration: none;
+  
+  
+}
 </style>
