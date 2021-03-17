@@ -62,7 +62,7 @@ export default {
   },
   methods: {
       deleteProfil() {
-          const confirmation = confirm("Êtes vous sûr de vouloir supprimer votre profil ?")
+          const confirmation = confirm("Êtes vous sûr de vouloir supprimer votre profil et tous les messages qui y sont associés?")
           if (confirmation){
               this.token = localStorage.getItem("token");
               this.user = VueJwtDecode.decode(this.token);
