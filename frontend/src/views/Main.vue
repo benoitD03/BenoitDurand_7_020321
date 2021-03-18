@@ -6,27 +6,30 @@
 
      <v-card
     class="mx-auto"
-    color="#26c6da"
+    color="#FFF"
     dark
     max-width="700"
     v-for="message in messages.messages" :key="message.id"
     id="card"
   >
-    <v-card-title>
+    <div id="topCard">
+      <v-card-title>
     
       <span class="title font-weight-light">{{ message.createdAt }} <br> {{ message.title }}</span>
       
     </v-card-title>
+    </div>
     
-
+    
+  <div id="cardContent">
     <v-card-text class="headline font-weight-bold">
       <div id="attachment" v-if="message.attachment">
         <img :src="message.attachment" alt="attachment">
       </div>
-      {{ message.content }}
+      <p id="messageContent">{{ message.content }}</p>
     </v-card-text>
 
-    <v-card-actions>
+     <v-card-actions id="bottomCard">
       <v-list-item class="grow">
         <v-list-item-avatar id="avatar" color="grey darken-3">
           <v-img
@@ -37,12 +40,12 @@
         </v-list-item-avatar>
 
         <v-list-item-content>
-          <v-list-item-title>{{ message.User.username }}</v-list-item-title>
+          <v-list-item-title id="username">{{ message.User.username }}</v-list-item-title>
         </v-list-item-content>
 
         <v-row id="row">
           
-          <span class="subheading mr-2"><v-icon class="mr-1">mdi-heart</v-icon>  256</span>
+          <span id="heart" class="subheading mr-2"><v-icon class="mr-1" color="#E86969">mdi-heart</v-icon>  256</span>
           <v-btn
               color="#E86969"
               dark
@@ -55,6 +58,10 @@
         </v-row>
       </v-list-item>
     </v-card-actions>
+  </div>
+    
+
+   
   </v-card>
   
 </div>
@@ -153,5 +160,25 @@ export default {
 }
 #avatar {
   margin-right: 10px;
+}
+#topCard {
+  background-color: #052fa7;
+}
+#cardContent {
+  color: black;
+  margin-top: 10px;
+}
+#username {
+  color: black;
+}
+#heart {
+  color: black;
+  margin-top: 10px;
+}
+#bottomCard {
+  border-top: 1px solid black;
+}
+#messageContent {
+  font-size: 18px;
 }
 </style>
