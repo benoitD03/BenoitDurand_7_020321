@@ -71,9 +71,9 @@ input[type=text], input[type=password], textarea {
 
 /* Set a style for all buttons */
 input[type=submit] {
-    background-color: #DAF7A6;
+    background-color: #1867c0;
     border-radius: 15px;
-    color: black;
+    color: white;
     padding: 14px 20px;
     margin: 8px 0;
     cursor: pointer;
@@ -81,14 +81,14 @@ input[type=submit] {
 }
 input[type=submit]:hover {
     background-color: white;
-    color: #052fa7 ;
-    border: 1px solid #052fa7 ;
+    color: #1867c0;
+    border: 1px solid #1867c0;
 }
 #login  {
   font-weight: bold;
-  background-color: #052fa7 ;
+  background-color: #DAF7A6;
   border-radius: 10px;
-  color: white;
+  color: black;
   padding: 15px 20px;
   margin: 8px 0;
   border: none;

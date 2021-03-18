@@ -4,66 +4,47 @@
     <Navigation/>
     <CreateMessage/>
 
-     <v-card
-    class="mx-auto"
-    color="#FFF"
-    dark
-    max-width="700"
-    v-for="message in messages.messages" :key="message.id"
-    id="card"
-  >
-    <div id="topCard">
-      <v-card-title>
+     <v-card class="mx-auto" color="#FFF" dark max-width="700" v-for="message in messages.messages" :key="message.id" id="card">
+        <div id="topCard">
+            <v-card-title>
+                <span class="title font-weight-light">{{ message.createdAt }} <br> {{ message.title }}</span>
+            </v-card-title>
+        </div>
     
-      <span class="title font-weight-light">{{ message.createdAt }} <br> {{ message.title }}</span>
-      
-    </v-card-title>
-    </div>
+        <div id="cardContent">
+
+            <v-card-text class="headline font-weight-bold">
+                <div id="attachment" v-if="message.attachment">
+                  <img :src="message.attachment" alt="attachment">
+                </div>
+                <p id="messageContent">{{ message.content }}</p>
+            </v-card-text>
+
+          <v-card-actions id="bottomCard">
+            <v-list-item class="grow">
+
+              <v-list-item-avatar id="avatar" color="grey darken-3">
+                <v-img class="elevation-6" alt="" :src="message.User.image"></v-img>
+              </v-list-item-avatar>
+
+              <v-list-item-content>
+                <v-list-item-title id="username">{{ message.User.username }}</v-list-item-title>
+              </v-list-item-content>
+
+              <v-row id="row">
+                <span id="heart" class="subheading mr-2"><v-icon class="mr-1" color="#E86969">mdi-heart</v-icon>  256</span>
+                <v-btn color="#E86969" dark medium @click="deleteMessage(message.id)" v-if="message.idUSERS == user.id || user.isAdmin == 1">
+                    Supprimer
+                </v-btn>
+              </v-row>
+
+            </v-list-item>
+          </v-card-actions>
+
+        </div>
+
+      </v-card>
     
-    
-  <div id="cardContent">
-    <v-card-text class="headline font-weight-bold">
-      <div id="attachment" v-if="message.attachment">
-        <img :src="message.attachment" alt="attachment">
-      </div>
-      <p id="messageContent">{{ message.content }}</p>
-    </v-card-text>
-
-     <v-card-actions id="bottomCard">
-      <v-list-item class="grow">
-        <v-list-item-avatar id="avatar" color="grey darken-3">
-          <v-img
-            class="elevation-6"
-            alt=""
-            :src="message.User.image"
-          ></v-img>
-        </v-list-item-avatar>
-
-        <v-list-item-content>
-          <v-list-item-title id="username">{{ message.User.username }}</v-list-item-title>
-        </v-list-item-content>
-
-        <v-row id="row">
-          
-          <span id="heart" class="subheading mr-2"><v-icon class="mr-1" color="#E86969">mdi-heart</v-icon>  256</span>
-          <v-btn
-              color="#E86969"
-              dark
-              medium
-              @click="deleteMessage(message.id)"
-              v-if="message.idUSERS == user.id || user.isAdmin == 1"
-            >
-              Supprimer
-            </v-btn>
-        </v-row>
-      </v-list-item>
-    </v-card-actions>
-  </div>
-    
-
-   
-  </v-card>
-  
 </div>
 
 </template>
@@ -162,7 +143,7 @@ export default {
   margin-right: 10px;
 }
 #topCard {
-  background-color: #052fa7;
+  background-color: #1867c0;
 }
 #cardContent {
   color: black;

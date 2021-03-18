@@ -1,17 +1,16 @@
 <template>
   <v-toolbar
-    color="#26c6da"
+    color="#1867c0"
     dark
   >
 
-    <v-btn text @click="goToProfil">
-        <v-icon>mdi-account</v-icon>Mon profil
+    <v-btn id="profil" text @click="goToProfil">
+        <v-icon>mdi-account</v-icon><p class="text">Mon profil</p>
       </v-btn>
 
     <v-divider
-      class="mx-4"
+      class="mx-4 divider"
       vertical
-      id="divider"
     ></v-divider>
     <v-btn text @click="goToMainPage">
       <span class="subheading"><img src="../assets/icon-left-font-monochrome-black.png"></span>
@@ -21,16 +20,12 @@
 
     <v-toolbar-items class="hidden-sm-and-down">
 
-      <v-divider vertical></v-divider>
+      <v-divider class="divider" vertical></v-divider>
 
       <v-btn text @click="disconnect">
-        <v-icon>mdi-logout</v-icon>Se déconnecter
+        <v-icon>mdi-logout</v-icon><p class="text">Se déconnecter</p>
       </v-btn>
-
-      <v-divider vertical></v-divider>
     </v-toolbar-items>
-
-    <v-app-bar-nav-icon></v-app-bar-nav-icon>
   </v-toolbar>
 </template>
 
@@ -56,7 +51,7 @@ export default {
 
 <style scoped>
     img {
-        width: 150px;
+        max-width: 150px;
         margin-left: 30px;
     }
     #navbar {
@@ -69,5 +64,16 @@ export default {
     }
     #divider {
         margin-left: 30px;
+    }
+    @media all and (max-width: 600px) {
+      img {
+        width: 100px;
+        margin-left: 0;
+      }
+      .text {
+        display: none;
+      }
+      
+
     }
 </style>

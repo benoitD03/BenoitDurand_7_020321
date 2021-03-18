@@ -69,12 +69,12 @@ input[type=submit] {
 }
 input[type=submit]:hover {
     background-color: white;
-    color: #052fa7 ;
-    border: 1px solid #052fa7 ;
+    color: #1867c0;
+    border: 1px solid #1867c0 ;
 }
 #signup  {
   font-weight: bold;
-  background-color: #052fa7 ;
+  background-color: #1867c0 ;
   border-radius: 10px;
   color: white;
   padding: 15px 20px;

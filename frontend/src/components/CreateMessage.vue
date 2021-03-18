@@ -106,7 +106,7 @@ export default {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 input[type=submit] {
-    background-color: #26c6da;
+    background-color: #1867c0;
     border-radius: 15px;
     color: white;
     padding: 14px 20px;
@@ -117,13 +117,13 @@ input[type=submit] {
 }
 input[type=submit]:hover {
     background-color: white;
-    color: #26c6da;
-    border: 1px solid #26c6da;
+    color: #1867c0;
+    border: 1px solid #1867c0;
 }
 #uploadImage {
-    background-color: #26c6da;
+    background-color: #DAF7A6;
     border-radius: 10px;
-    border: 2px solid black;
+    border: 1px solid black;
     margin: 20px auto;
     text-align: center;
 }
