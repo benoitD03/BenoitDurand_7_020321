@@ -48,7 +48,7 @@
               dark
               medium
               @click="deleteMessage(message.id)"
-              v-if="message.idUSERS == user.id"
+              v-if="message.idUSERS == user.id || user.isAdmin == 1"
             >
               Supprimer
             </v-btn>
@@ -77,7 +77,12 @@ export default {
       return {
           messages: null,
           token: null,
-          user: null,
+          user:{
+            email: null,
+            username: null,
+            image: null,
+            isAdmin: null
+          },
           message: {
               id: null,
               idUSERS: null,

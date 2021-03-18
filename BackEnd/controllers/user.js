@@ -102,7 +102,7 @@ exports.getUserProfile = (req, res, next) => {
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     const userId = decodedToken.userId;
     db.User.findOne({
-        attributes: ['id', 'email', 'username', 'description', 'image'],
+        attributes: ['id', 'email', 'username', 'description', 'isAdmin', 'image'],
         where: { id: userId }
     })
     .then(user => res.status(200).json(user))
