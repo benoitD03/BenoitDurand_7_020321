@@ -4,15 +4,16 @@
          <div id="container">  
             <form @submit.prevent="modify">
 
-            <label><b>Adresse email</b> (Actuellement: {{ user.email }})</label>
+            <label><b><v-icon class="icon">mdi-email</v-icon> Adresse email</b><br>(Actuellement: {{ user.email }})</label>
             <input type="text" placeholder="Votre Nouvelle adresse email" name="email" required v-model="email">
 
-            <label><b>Pseudo</b> (Actuellement: {{ user.username }})</label>
+            <label><v-icon class="icon">mdi-account</v-icon><b> Pseudo</b><br>(Actuellement: {{ user.username }})</label>
             <input type="text" placeholder="Votre nouveau Pseudo" name="username" required v-model="username">
 
-            <label><b>Description</b> (Actuellement: {{ user.description }})</label>
+            <label><v-icon class="icon">mdi-chat</v-icon><b> Description</b><br>(Actuellement: {{ user.description }})</label>
             <textarea name="description" rows="5" cols="33" placeholder="Votre nouvelle Description" v-model="description"></textarea>
 
+            <label><v-icon class="icon">mdi-image</v-icon><b> Photo de profil</b></label><br>
             <input id="uploadImage" type="file" ref="image" @change="uploadImage">
 
             <input type="submit" id='submit' value="Enregistrer les modifications">        
@@ -86,7 +87,7 @@ export default {
 
 <style scoped>
 #container{
-    width:400px;
+    max-width:700px;
     margin:0 auto;
     margin-top:10%;
 }
@@ -113,7 +114,7 @@ input[type=text], input[type=password], textarea {
 
 /* Set a style for all buttons */
 input[type=submit] {
-    background-color: #26c6da;
+    background-color: #1867c0;
     border-radius: 15px;
     color: white;
     padding: 14px 20px;
@@ -124,14 +125,17 @@ input[type=submit] {
 }
 input[type=submit]:hover {
     background-color: white;
-    color: #26c6da;
-    border: 1px solid #26c6da;
+    color: #1867c0;
+    border: 1px solid #1867c0;
 }
 #uploadImage {
-    background-color: #26c6da;
+    background-color: #DAF7A6;
     border-radius: 10px;
     border: 2px solid black;
     margin: 20px auto;
     text-align: center;
+}
+.icon {
+    margin-bottom: 5px;
 }
 </style>

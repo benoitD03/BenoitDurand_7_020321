@@ -7,8 +7,8 @@
                 <h1>{{ user.username }}</h1>
             </div>
             <div id="infos">
-                <p class="info"><v-icon>mdi-email</v-icon><b>Adresse email:</b>  {{ user.email }}</p><br>
-                <p class="info"><v-icon>mdi-chat</v-icon><b>Description:</b>  {{ user.description }}</p>
+                <p class="info"><v-icon class="icon">mdi-email</v-icon><b> Adresse email:</b>  {{ user.email }}</p><br>
+                <p class="info"><v-icon class="icon">mdi-chat</v-icon><b> Description:</b>  {{ user.description }}</p>
             </div>
             <div class="my-2" id="options">
                 <v-btn color="#DAF7A6" large class="boutons" @click="goToModify">
@@ -113,6 +113,9 @@ export default {
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 30px;
+}
+.icon {
+    margin-bottom: 5px;
 }
 @media all and (max-width: 600px) {
     #options {

@@ -2,10 +2,10 @@
   <div id="container">  
       <router-link id="signupLink" to="/signup"><v-btn id="signup">S'inscrire</v-btn></router-link><br>
         <form>
-            <label><b>Adresse email :</b></label>
+            <label><v-icon class="icon">mdi-email</v-icon><b> Adresse email :</b></label>
             <input type="text" placeholder="Votre adresse email" name="email" required v-model="email">
 
-            <label><b>Mot de passe :</b></label>
+            <label><v-icon class="icon">mdi-lock</v-icon><b> Mot de passe :</b></label>
             <input type="password" placeholder="Votre Mot de passe" name="password" required v-model="password">
 
             <input type="submit" id='submit' value='Connexion' @click.prevent="userLogin">
@@ -85,8 +85,9 @@ input[type=submit]:hover {
 }
 #signupLink:link {
   text-decoration: none;
-  
-  
+}
+.icon {
+    margin-bottom: 5px;
 }
 
 </style>

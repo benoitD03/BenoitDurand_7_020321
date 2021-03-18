@@ -3,16 +3,16 @@
         <router-link id="loginLink" to="/login"><v-btn id="login">Se connecter</v-btn></router-link><br>
         <form>
             
-            <label><b>Adresse email</b></label>
+            <label><v-icon class="icon">mdi-email</v-icon><b> Adresse email</b></label>
             <input type="text" placeholder="Votre adresse email" name="email" required v-model="email">
 
-            <label><b>Pseudo</b></label>
+            <label><v-icon class="icon">mdi-account</v-icon><b> Pseudo</b></label>
             <input type="text" placeholder="Votre Pseudo" name="username" required v-model="username">
 
-            <label><b>Mot de passe</b></label>
+            <label><v-icon class="icon">mdi-lock</v-icon><b> Mot de passe</b></label>
             <input type="password" placeholder="Votre Mot de passe" name="password" required v-model="password">
 
-            <label><b>Description</b></label>
+            <label><v-icon class="icon">mdi-chat</v-icon><b> Description</b></label>
             <textarea name="description" rows="5" cols="33" v-model="description"></textarea>
 
             <input type="submit" id='submit' value="S'inscrire" @click.prevent="userSignup">        
@@ -97,7 +97,8 @@ input[type=submit]:hover {
 }
 #loginLink:link {
   text-decoration: none;
-  
-  
+}
+.icon {
+    margin-bottom: 5px;
 }
 </style>
