@@ -4,7 +4,7 @@
     <Navigation/>
     <CreateMessage/>
 
-     <v-card class="mx-auto" color="#FFF" dark max-width="700" v-for="message in messages.messages" :key="message.id" id="card">
+     <v-card class="mx-auto" color="#FFF" dark max-width="700" v-for="message in messages.messages.slice().reverse()" :key="message.id" id="card">
         <div id="topCard">
             <v-card-title>
                 <span class="title font-weight-light">{{ message.createdAt }} <br> {{ message.title }}</span>
