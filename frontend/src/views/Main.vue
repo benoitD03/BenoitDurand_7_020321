@@ -34,6 +34,7 @@
               <v-row id="row">
                 <span id="heart" class="subheading mr-2"><v-icon class="mr-1" color="#E86969">mdi-heart</v-icon>  256</span>
                 <v-btn color="#E86969" dark medium @click="deleteMessage(message.id)" v-if="message.idUSERS == user.id || user.isAdmin == 1">
+                    <v-icon>mdi-delete</v-icon>
                     Supprimer
                 </v-btn>
               </v-row>

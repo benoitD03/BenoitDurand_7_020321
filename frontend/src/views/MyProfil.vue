@@ -7,27 +7,19 @@
                 <h1>{{ user.username }}</h1>
             </div>
             <div id="infos">
-                <p><b>Adresse email:</b>  {{ user.email }}</p><br>
-                <p><b>Description:</b>  {{ user.description }}</p>
+                <p class="info"><v-icon>mdi-email</v-icon><b>Adresse email:</b>  {{ user.email }}</p><br>
+                <p class="info"><v-icon>mdi-chat</v-icon><b>Description:</b>  {{ user.description }}</p>
             </div>
             <div class="my-2" id="options">
-            <v-btn
-              color="#26c6da"
-              dark
-              large
-              @click="goToModify"
-            >
-              Modifier le profil
-            </v-btn>
-            <v-btn
-              color="#26c6da"
-              dark
-              large
-              @click="deleteProfil"
-            >
-              Supprimer le profil
-            </v-btn>
-          </div>
+                <v-btn color="#DAF7A6" large class="boutons" @click="goToModify">
+                    <v-icon>mdi-pen</v-icon>
+                    Modifier le profil
+                </v-btn>
+                <v-btn color="#E86969" dark large class="boutons" @click="deleteProfil">
+                    <v-icon>mdi-delete</v-icon>
+                Supprimer le profil
+                </v-btn>
+            </div>
             
 
         </div>
@@ -87,11 +79,12 @@ export default {
 
 <style scoped>
 #profil {
+    font-size: 20px;
     text-align: center;
     margin: 30px auto;
     max-width: 800px;
     border: 1px solid #f1f1f1;
-    background-color: #D9EEF0;
+    background-color: white;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     border-radius: 15px;
 }
@@ -99,9 +92,38 @@ export default {
 #username, #avatar, #infos {
     margin: 50px auto;
 }
+/* #infos {
+    border: 1px solid #f1f1f1;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 15px;
+    text-align: left;
+    width: 70%;
+} */
+
+.info {
+    margin: 10px auto;
+    padding: 15px 0;
+    border: 1px solid #f1f1f1;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 10px;
+    text-align: center;
+    width: 70%;
+}
 #options {
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 30px;
+}
+@media all and (max-width: 600px) {
+    #options {
+        display: block;
+    }
+    .boutons {
+        margin: 10px;
+    }
+    .info {
+        width: 95%;
+        font-size: 15px;
+    }
 }
 </style>
