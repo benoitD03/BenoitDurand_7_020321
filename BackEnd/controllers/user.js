@@ -109,6 +109,18 @@ exports.getUserProfile = (req, res, next) => {
     .catch(error => res.status(404).json({ error }));
 };
 
+// ****************** Afficher tous les utilisateurs ******************
+exports.getAllUsers = (req, res, next) => {
+    const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
+    const userId = decodedToken.userId;
+    db.User.findAll({
+        attributes: ['id', 'email', 'username', 'description', 'isAdmin', 'image']
+    })
+    .then(users => res.status(200).json(users))
+    .catch(error => res.status(404).json({ error }));
+};
+
 // ****************** Modifier un utilisateur ******************
 
 exports.modifyUser = (req, res, next) => {

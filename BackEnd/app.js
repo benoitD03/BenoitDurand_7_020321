@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const userRoutes = require('./routes/user');
 const messageRoutes = require('./routes/message');
+const isAdminRoutes = require('./routes/isAdmin');
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use((req, res, next) => {
 
   app.use('/api/users', userRoutes);
   app.use('/api/messages', messageRoutes);
+  app.use('/api/admin', isAdminRoutes);
   app.use('/images', express.static(path.join(__dirname, 'images')));
 
   module.exports = app;

@@ -20,8 +20,11 @@
                 Supprimer le profil
                 </v-btn>
             </div>
-            
-
+            <router-link to="/allusers">
+                <v-btn color="#E86969" dark large class="boutons" v-if="user.isAdmin == 1">
+                Gerer les autres utilisateurs
+                </v-btn>
+            </router-link>
         </div>
     </div>
 </template>
