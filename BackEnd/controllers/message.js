@@ -46,31 +46,6 @@ exports.getAllMessages = (req, res, next) => {
     .catch(error => res.status(400).json({ error }));
 };
 
-// ****************** Modifier un message ******************
-
-exports.modifyMessage = (req, res, next) => {
-
-    db.Message.findOne({
-        attributes: ['id', 'title', 'content', 'attachment'],
-        where: {id: req.params.id}
-    })
-    .then(messageFound => {
-        if (!messageFound){
-            return res.status(404).json({ error : 'Message inexistant'})
-        }
-        db.Message.update({
-            title: req.body.title,
-            content: req.body.content,
-            attachment: req.body.attachment
-        },
-            {where: {id: req.params.id}
-        })
-        .then(() => res.status(201).json({ message: 'Message modifié avec succès' }))
-        .catch(error => res.status(500).json({ error }));
-    })
-    .catch(error => res.status(500).json({ error }));
-}; 
-
 
 // ****************** Effacer un message ******************
 exports.deleteMessage = (req, res, next) => {

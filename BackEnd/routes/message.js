@@ -8,7 +8,6 @@ const router = express.Router();
 router.post('/', auth, multer, messageController.createMessage);
 router.get('/', auth, messageController.getAllMessages);
 router.delete('/:id', auth, multer, messageController.deleteMessage);
-router.put('/:id', auth, messageController.modifyMessage);
 
 module.exports = router;
 
