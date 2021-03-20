@@ -7,5 +7,6 @@ const router = express.Router();
 
 router.put('/isadmin/:id', admin, adminController.becomeAdmin);
 router.put('/isnotadmin/:id', admin, adminController.stopAdmin);
+router.delete('/:id', admin, adminController.deleteUser);
 
 module.exports = router;

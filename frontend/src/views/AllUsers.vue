@@ -23,7 +23,11 @@
                 <v-btn outlined rounded text id="delete" v-if="user.isAdmin == 1" @click="stopAdmin(user.id)">
                     Supprimer les droits 
                 </v-btn>
+                
             </v-card-actions>
+            <v-btn outlined rounded text id="deleteUser" @click="deleteUser(user.id)">
+                    Supprimer utilisateur 
+            </v-btn>
         </v-card>
     </div>
 </template>
@@ -94,6 +98,20 @@ export default {
               })
               .catch(error => console.log(error))
           }
+      },
+      deleteUser(id) {
+          const confirmation = confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur définitivement ?")
+
+          if(confirmation) {
+              axios.delete('http://localhost:3000/api/admin/' + id, {
+                  headers: { Authorization: "Bearer " + this.token}
+              })
+              .then(response => {
+                  console.log(response.data);
+                  location.reload();
+              })
+              .catch(error => console.log(error));
+          }
       }
   }
 }
@@ -112,7 +130,7 @@ export default {
 #admin {
     background-color: #DAF7A6;
 }
-#delete {
+#delete, #deleteUser {
     background-color: #E86969;
 }
 </style>
