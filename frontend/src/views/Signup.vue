@@ -13,7 +13,7 @@
             <input type="password" placeholder="Votre Mot de passe" name="password" required v-model="password">
 
             <label><v-icon class="icon">mdi-chat</v-icon><b> Description</b></label>
-            <textarea name="description" rows="5" cols="33" v-model="description"></textarea>
+            <textarea name="description" rows="5" cols="33" placeholder="Votre Description" v-model="description"></textarea>
 
             <input type="submit" id='submit' value="S'inscrire" @click.prevent="userSignup">        
         </form>    
@@ -35,7 +35,7 @@ export default {
                 console.log(response);
                 window.location.href='/login'
             })
-            .catch(error => console.log(error));
+            .catch(() => alert("Champs manquants ou incorrects. Le mot de passe doit contenir minimum 6 caractères dont un chiffre."));
         }, 
     }
 }
@@ -48,7 +48,7 @@ export default {
     margin:0 auto;
     margin-top:10%;
 }
-/* Bordered form */
+
 form {
     width:100%;
     padding: 30px;
@@ -58,8 +58,6 @@ form {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-
-/* Full-width inputs */
 input[type=text], input[type=password], textarea {
     width: 100%;
     padding: 12px 20px;
@@ -69,7 +67,6 @@ input[type=text], input[type=password], textarea {
     box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
 input[type=submit] {
     background-color: #1867c0;
     border-radius: 15px;

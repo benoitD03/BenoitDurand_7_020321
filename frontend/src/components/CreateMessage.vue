@@ -1,22 +1,11 @@
 <template>
     <div id="container">
         <form @submit.prevent="createMessage">
-            <v-text-field
-              color="purple darken-2"
-              label="Titre"
-              id="title"
-              v-model="title"
-            ></v-text-field>
-
+            <v-text-field color="purple darken-2" label="Titre" id="title" v-model="title"></v-text-field>
             <input id="uploadImage" type="file" ref="attachment" @change="uploadImage()">
 
             <v-container id="textarea" fluid>
-                <v-textarea
-                clearable
-                clear-icon="mdi-close-circle"
-                label="Exprimez-vous ..."
-                v-model="content"
-                ></v-textarea>
+                <v-textarea clearable clear-icon="mdi-close-circle" label="Exprimez-vous ..." v-model="content"></v-textarea>
             </v-container>
 
             <input type="submit" id='submit' value="Envoyer">

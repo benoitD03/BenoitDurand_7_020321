@@ -28,7 +28,7 @@ export default {
                 localStorage.setItem("token", response.data.token);
                 window.location.href='/main'
             })
-            .catch(error => console.log(error));
+            .catch(() => alert("Email ou Mot de passe incorrect"));
         }
     }
 }

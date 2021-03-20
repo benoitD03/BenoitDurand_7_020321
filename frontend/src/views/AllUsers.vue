@@ -2,13 +2,13 @@
     <div id="container">
         <Navigation/>
 
-        <v-card class="mx-auto" max-width="500" outlined v-for="user in users" :key="user.id" id="card">
+        <v-card class="mx-auto" max-width="600" outlined v-for="user in users" :key="user.id" id="card">
             <v-list-item three-line>
                 <v-list-item-content>
-                     <div class="overline mb-4">
+                     <div class="overline mb-4" id="username">
                         {{ user.username }}
                     </div>
-                    <v-list-item-subtitle>{{ user.description }}</v-list-item-subtitle>
+                    <v-list-item-subtitle id="description">{{ user.description }}</v-list-item-subtitle>
                 </v-list-item-content>
 
                 <v-list-item-avatar tile size="80">
@@ -16,18 +16,20 @@
                 </v-list-item-avatar>
             </v-list-item>
 
-            <v-card-actions>
-                <v-btn outlined rounded text id="admin" v-if="user.isAdmin == 0" @click="becomeAdmin(user.id)">
+            <v-card-actions id="actions">
+                <v-btn small dark text id="admin" v-if="user.isAdmin == 0" @click="becomeAdmin(user.id)">
+                    <v-icon>mdi-tools</v-icon>
                     Nommer administrateur
                 </v-btn>
-                <v-btn outlined rounded text id="delete" v-if="user.isAdmin == 1" @click="stopAdmin(user.id)">
+                <v-btn small dark text id="delete" v-if="user.isAdmin == 1" @click="stopAdmin(user.id)">
+                    <v-icon>mdi-tools</v-icon>
                     Supprimer les droits 
                 </v-btn>
-                
-            </v-card-actions>
-            <v-btn outlined rounded text id="deleteUser" @click="deleteUser(user.id)">
+                <v-btn small dark text id="deleteUser" @click="deleteUser(user.id)">
+                    <v-icon>mdi-delete</v-icon>
                     Supprimer utilisateur 
-            </v-btn>
+                </v-btn>
+            </v-card-actions>
         </v-card>
     </div>
 </template>
@@ -121,16 +123,35 @@ export default {
 
 <style scoped>
 #card {
-    margin: 20px;
+    margin: 20px auto;
     border: 1px solid #f1f1f1;
     border-radius: 15px;
     background: #fff;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+#username {
+    font-size: 20px;
+    font-weight: bold;
+}
+#description {
+    font-size: 18px;
+}
 #admin {
-    background-color: #DAF7A6;
+    background-color: #1867c0;
+    border-radius: 8px;
+}
+#deleteUser {
+    margin: 10px;
 }
 #delete, #deleteUser {
     background-color: #E86969;
+    border-radius: 8px;
+}
+@media all and (max-width: 570px) {
+    #actions {
+        display: flex;
+        flex-direction: column;
+        
+    }
 }
 </style>

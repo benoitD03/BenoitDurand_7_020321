@@ -1,17 +1,11 @@
 <template>
-  <v-toolbar
-    color="#1867c0"
-    dark
-  >
+  <v-toolbar id="navbar" color="#1867c0" dark>
 
     <v-btn id="profil" text @click="goToProfil">
         <v-icon>mdi-account</v-icon><p class="text">Mon profil</p>
-      </v-btn>
+    </v-btn>
 
-    <v-divider
-      class="mx-4 divider"
-      vertical
-    ></v-divider>
+    <v-divider class="mx-4 divider" vertical></v-divider>
     <v-btn text @click="goToMainPage">
       <span class="subheading"><img src="../assets/icon-left-font-monochrome-black.png"></span>
     </v-btn>
@@ -53,11 +47,6 @@ export default {
     img {
         max-width: 150px;
         margin-left: 30px;
-    }
-    #navbar {
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 2px solid black;
     }
     .vbtn {
         margin: 10px 0;

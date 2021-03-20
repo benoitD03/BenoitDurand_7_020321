@@ -16,7 +16,6 @@ exports.signup = (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
     const description = req.body.description;
-    //const image = req.body.image;
 
     //Verification des champs remplis par l'utilisateur
     if (email == null || username == null || password == null) {
