@@ -84,9 +84,9 @@ input[type=submit]:hover {
 }
 #login  {
   font-weight: bold;
-  background-color: #DAF7A6;
+  background-color: #1867c0;
   border-radius: 10px;
-  color: black;
+  color: white;
   padding: 15px 20px;
   margin: 8px 0;
   border: none;

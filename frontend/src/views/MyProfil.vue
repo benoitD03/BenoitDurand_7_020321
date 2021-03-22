@@ -13,12 +13,14 @@
                 <v-avatar id="avatar" size="250"><img :src="user.image" alt="Photo de profil"></v-avatar>
                 <h1>{{ user.username }}</h1>
             </div>
+
             <div id="infos">
                 <p class="info"><v-icon class="icon">mdi-email</v-icon><b> Adresse email:</b>  {{ user.email }}</p><br>
                 <p class="info" id="description"><v-icon class="icon">mdi-chat</v-icon><b> Description:</b>  {{ user.description !== 'undefined' ? user.description : "Pas de description" }}</p>
             </div>
+
             <div class="my-2" id="options">
-                <v-btn color="#DAF7A6" large class="boutons" @click="goToModify">
+                <v-btn color="#1867c0" dark large class="boutons" @click="goToModify">
                     <v-icon>mdi-pen</v-icon>
                     Modifier le profil
                 </v-btn>
@@ -27,6 +29,7 @@
                     Supprimer le profil
                 </v-btn>
             </div>
+
         </div>
     </div>
 </template>
@@ -68,7 +71,6 @@ export default {
           if (confirmation){
               this.token = localStorage.getItem("token");
               this.user = VueJwtDecode.decode(this.token);
-              console.log(this.user.userId)
               axios.delete('http://localhost:3000/api/users/' + this.user.userId, {
                   headers: { Authorization: "Bearer " + this.token }
               })

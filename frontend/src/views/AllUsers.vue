@@ -75,8 +75,6 @@ export default {
           const confirmation = confirm("Êtes vous sûr de vouloir donner les droits d'administrateur à cet utilisateur ?")
 
           if(confirmation) {
-            //   this.token = localStorage.getItem("token");
-            //   VueJwtDecode.decode(this.token)
               axios.put('http://localhost:3000/api/admin/isadmin/' + id, user, {
                   headers: { Authorization: "Bearer " + this.token }
               })

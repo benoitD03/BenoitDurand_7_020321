@@ -8,7 +8,7 @@
                 <v-textarea clearable clear-icon="mdi-close-circle" label="Exprimez-vous ..." v-model="content"></v-textarea>
             </v-container>
 
-            <input type="submit" id='submit' value="Envoyer">
+            <input type="submit" id='submit' value="Publier">
         </form>
     </div>
 </template>

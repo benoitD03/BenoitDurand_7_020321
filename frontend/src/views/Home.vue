@@ -31,9 +31,9 @@ export default {
 }
 #login, #signup  {
   font-weight: bold;
-  background-color: #DAF7A6;
+  background-color: #1867c0;
   border-radius: 15px;
-  color: black;
+  color: white;
   margin: auto 10px;
   cursor: pointer;
   padding: 25px 20px;
