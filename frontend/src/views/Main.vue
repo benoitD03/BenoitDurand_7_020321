@@ -21,27 +21,27 @@
                 <p id="messageContent">{{ message.content }}</p>
             </v-card-text>
 
-          <v-card-actions id="bottomCard">
-            <v-list-item class="grow">
+            <v-card-actions id="bottomCard">
+              <v-list-item class="grow">
 
-              <v-list-item-avatar id="avatar" color="grey darken-3">
-                <v-img class="elevation-6" alt="" :src="message.User.image"></v-img>
-              </v-list-item-avatar>
+                <v-list-item-avatar id="avatar" color="grey darken-3">
+                  <v-img class="elevation-6" alt="" :src="message.User.image"></v-img>
+                </v-list-item-avatar>
 
-              <v-list-item-content>
-                <v-list-item-title id="username">{{ message.User.username }}</v-list-item-title>
-              </v-list-item-content>
+                <v-list-item-content>
+                  <v-list-item-title id="username">{{ message.User.username }}</v-list-item-title>
+                </v-list-item-content>
 
-              <v-row id="row">
-                <span id="heart" class="subheading mr-2"><v-icon class="mr-1" color="#E86969">mdi-heart</v-icon>  22</span>
-                <v-btn color="#E86969" dark medium @click="deleteMessage(message.id)" v-if="message.idUSERS == user.id || user.isAdmin == 1">
-                    <v-icon>mdi-delete</v-icon>
-                    Supprimer
-                </v-btn>
-              </v-row>
+                <v-row id="row">
+                  <span id="heart" class="subheading mr-2"><v-icon class="mr-1" color="#E86969">mdi-heart</v-icon>  22</span>
+                  <v-btn color="#E86969" dark medium @click="deleteMessage(message.id)" v-if="message.idUSERS == user.id || user.isAdmin == 1">
+                      <v-icon>mdi-delete</v-icon>
+                      Supprimer
+                  </v-btn>
+                </v-row>
 
-            </v-list-item>
-          </v-card-actions>
+              </v-list-item>
+            </v-card-actions>
 
         </div>
 
