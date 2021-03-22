@@ -33,6 +33,7 @@ export default {
     components: {
     Navigation
   },
+  props: ['email', 'username', 'description'],
   data() {
       return {
           user: {

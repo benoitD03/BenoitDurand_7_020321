@@ -8,7 +8,7 @@
      <v-card class="mx-auto" color="#FFF" dark max-width="700" v-for="message in messages.messages.slice().reverse()" :key="message.id" id="card">
         <div id="topCard">
             <v-card-title>
-                <span class="title font-weight-light">{{ message.createdAt }} <br> {{ message.title }}</span>
+                <span class="title font-weight-light">{{ message.createdAt.split('T')[0] }} <br> {{ message.title }}</span>
             </v-card-title>
         </div>
     
@@ -65,7 +65,9 @@ export default {
   },
   data() {
       return {
-          messages: null,
+          messages: {
+            messages: []
+          },
           token: null,
           user:{
             email: null,

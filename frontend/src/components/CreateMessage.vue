@@ -19,6 +19,7 @@ import VueJwtDecode from 'vue-jwt-decode';
 import axios from 'axios';
 export default {
     name: 'CreateMessage',
+    props: ['title', 'content', 'attachment'],
     data () {
         return {
             messages: null,

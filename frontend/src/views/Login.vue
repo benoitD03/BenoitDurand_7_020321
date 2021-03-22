@@ -18,6 +18,7 @@
 <script>
 import axios from 'axios';
 export default {
+    props: ['email', 'password'],
     methods: {
         userLogin() {
             axios.post('http://localhost:3000/api/users/login', {

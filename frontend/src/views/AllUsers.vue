@@ -8,7 +8,7 @@
                      <div class="overline mb-4" id="username">
                         {{ user.username }}
                     </div>
-                    <v-list-item-subtitle id="description">{{ user.description }}</v-list-item-subtitle>
+                    <v-list-item-subtitle id="description">{{ user.description !== 'undefined' ? user.description : "Pas de description"  }}</v-list-item-subtitle>
                 </v-list-item-content>
 
                 <v-list-item-avatar tile size="80">

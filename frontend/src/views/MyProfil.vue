@@ -15,7 +15,7 @@
             </div>
             <div id="infos">
                 <p class="info"><v-icon class="icon">mdi-email</v-icon><b> Adresse email:</b>  {{ user.email }}</p><br>
-                <p class="info" id="description"><v-icon class="icon">mdi-chat</v-icon><b> Description:</b>  {{ user.description }}</p>
+                <p class="info" id="description"><v-icon class="icon">mdi-chat</v-icon><b> Description:</b>  {{ user.description !== 'undefined' ? user.description : "Pas de description" }}</p>
             </div>
             <div class="my-2" id="options">
                 <v-btn color="#DAF7A6" large class="boutons" @click="goToModify">
@@ -42,7 +42,12 @@ export default {
   },
   data() {
       return {
-          user: null
+          user: {
+              email: null,
+              username: null,
+              image: null,
+              isAdmin: false,
+          }
       }
   },
   created() {

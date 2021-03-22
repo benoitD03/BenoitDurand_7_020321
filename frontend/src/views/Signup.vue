@@ -23,6 +23,7 @@
 <script>
 import axios from 'axios';
 export default {
+    props:['email', 'username', 'password', 'description'],
     methods: {
         userSignup() {
             axios.post('http://localhost:3000/api/users/signup', {
