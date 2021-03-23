@@ -15,4 +15,5 @@ node server (ou nodemon server si utilisation de nodemon)
 - Credentials d'un admin : 
 
 email : admin@test.com
+
 password : azerty1
