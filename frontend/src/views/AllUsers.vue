@@ -18,7 +18,6 @@
 
             <v-card-actions id="actions">
                 <v-btn small dark text id="admin" v-if="user.isAdmin == 0" @click="becomeAdmin(user.id)">
-                    <v-icon>mdi-tools</v-icon>
                     Nommer administrateur
                 </v-btn>
                 <v-btn small dark text id="delete" v-if="user.isAdmin == 1" @click="stopAdmin(user.id)">

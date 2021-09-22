@@ -104,6 +104,7 @@ input[type=submit] {
     border: none;
     cursor: pointer;
     width: 100%;
+    transition: all .3s ease-in;
 }
 input[type=submit]:hover {
     background-color: white;
@@ -111,9 +112,6 @@ input[type=submit]:hover {
     border: 1px solid #1867c0;
 }
 #uploadImage {
-    background-color: #DAF7A6;
-    border-radius: 10px;
-    border: 1px solid black;
     margin: 20px auto;
     text-align: center;
 }
